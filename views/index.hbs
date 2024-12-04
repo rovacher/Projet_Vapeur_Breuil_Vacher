@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vapeur - Accueil</title>
+</head>
+<body>
+  <h1>Jeux Mis en Avant</h1>
+  <ul>
+    {{#each games}}
+      <li>
+        <strong>{{this.title}}</strong><br>
+        Genre: {{this.genre.name}}<br>
+        Éditeur: {{this.publisher.name}}<br>
+        Description: {{this.description}}
+      </li>
+    {{/each}}
+  </ul>
+  <a href="">Ajouter un jeu</a>
+</body>
+</html>

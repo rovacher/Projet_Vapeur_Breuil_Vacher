@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vapeur - Ajouter un jeu</title>
+</head>
+<body>
+  <h1>Ajouter un nouveau jeu</h1>
+  <form action="/games" method="POST">
+    <label for="title">Titre:</label>
+    <input type="text" id="title" name="title" required><br>
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea><br>
+    <label for="releaseDate">Date de sortie:</label>
+    <input type="date" id="releaseDate" name="releaseDate" required><br>
+    <label for="genreId">Genre:</label>
+    <select name="genreId" required>
+      {{#each genres}}
+        <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+    </select><br>
+    <label for="publisherId">Éditeur:</label>
+    <select name="publisherId" required>
+      {{#each publishers}}
+        <option value="{{this.id}}">{{this.name}}</option>
+      {{/each}}
+    </select><br>
+    <button type="submit">Ajouter</button>
+  </form>
+</body>
+</html>
