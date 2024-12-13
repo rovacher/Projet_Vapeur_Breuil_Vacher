@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Modifier un Jeu</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Modifier le Jeu</h1>
+  <form action="/games/{{game.id}}" method="POST">
+    <label for="title">Titre :</label>
+    <input type="text" id="title" name="title" value="{{game.title}}" required><br>
+
+    <label for="description">Description :</label>
+    <textarea id="description" name="description" required>{{game.description}}</textarea><br>
+
+    <label for="releaseDate">Date de sortie :</label>
+    <input type="date" id="releaseDate" name="releaseDate" value="{{dateFormat game.releaseDate}}" required><br>
+
+    <label for="genre">Genre :</label>
+<label for="genre">Genre :</label>
+<select id="genre" name="genreId" required>
+  {{#each genres}}
+    <option value="{{this.id}}" >{{this.name}}</option>
+  {{/each}}
+</select><br>
+
+<label for="publisher">Éditeur :</label>
+<select id="publisher" name="publisherId" required>
+  {{#each publishers}}
+    <option value="{{this.id}}"></option>
+  {{/each}}
+</select><br>
+
+<label for="mise_en_avant">Mise en Avant :</label>
+<select id="mise_en_avant" name="mise_en_avant" required>
+    {{#if games.mise_en_avant}}
+            Oui
+            {{else}}
+            Non
+            {{/if}}
+            
+</select><br>
+
+    <button type="submit">Sauvegarder</button>
+  </form>
+
+  <form action="/games/{{game.id}}/delete" method="POST" onsubmit="return confirmDelete()">
+  <button type="submit" style="color: red;">Supprimer</button>
+  </form>
+
+<script>
+  function confirmDelete() {
+    return confirm("Êtes-vous sûr de vouloir supprimer ce jeu ?");
+  }
+</script>
+  
+
+
+  <a href="/games">Retour à la liste des jeux</a>
+</body>
+</html>

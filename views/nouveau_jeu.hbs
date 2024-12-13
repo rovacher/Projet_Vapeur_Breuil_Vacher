@@ -2,30 +2,59 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Vapeur - Ajouter un jeu</title>
+  <title>Créer un Jeu</title>
 </head>
 <body>
-  <h1>Ajouter un nouveau jeu</h1>
+  <h1>Ajouter un Nouveau Jeu</h1>
+
+  <!-- Formulaire pour ajouter un jeu -->
   <form action="/games" method="POST">
-    <label for="title">Titre:</label>
-    <input type="text" id="title" name="title" required><br>
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" required></textarea><br>
-    <label for="releaseDate">Date de sortie:</label>
-    <input type="date" id="releaseDate" name="releaseDate" required><br>
-    <label for="genreId">Genre:</label>
-    <select name="genreId" required>
+    <label for="title">Titre</label>
+    <input type="text" name="title" required><br>
+
+    <label for="description">Description</label>
+    <textarea name="description" required></textarea><br>
+
+    <label for="releaseDate">Date de sortie</label>
+    <input type="date" name="releaseDate" required><br>
+
+    <label for="genreId">Genre</label>
+    <select name="genreId">
       {{#each genres}}
         <option value="{{this.id}}">{{this.name}}</option>
       {{/each}}
     </select><br>
-    <label for="publisherId">Éditeur:</label>
-    <select name="publisherId" required>
+
+    <label for="publisherId">Éditeur</label>
+    <select name="publisherId">
       {{#each publishers}}
         <option value="{{this.id}}">{{this.name}}</option>
       {{/each}}
     </select><br>
-    <button type="submit">Ajouter</button>
+
+    <!-- Case à cocher pour mise en avant -->
+    <label for="mise_en_avant">Mettre en avant ce jeu ?</label>
+    <input type="checkbox" name="mise_en_avant"><br>
+
+    <button type="submit">Ajouter un Jeu</button>
+  </form>
+
+  <hr>
+
+  <h2>Ajouter un Genre</h2>
+  <form action="/genres" method="POST">
+    <label for="name">Nom du Genre</label>
+    <input type="text" name="name" required>
+    <button type="submit">Ajouter Genre</button>
+  </form>
+
+  <hr>
+
+  <h2>Ajouter un Éditeur</h2>
+  <form action="/publishers" method="POST">
+    <label for="name">Nom de l'Éditeur</label>
+    <input type="text" name="name" required>
+    <button type="submit">Ajouter Éditeur</button>
   </form>
 </body>
 </html>

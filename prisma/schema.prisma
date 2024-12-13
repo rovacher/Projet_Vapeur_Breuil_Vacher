@@ -21,12 +21,12 @@ model Jeu {
 
 model Genre {
   id    Int    @id @default(autoincrement())
-  name  String
+  name  String @unique
   games Jeu[]
 }
 
 model Editeur {
   id    Int    @id @default(autoincrement())
-  name  String
+  name  String @unique
   games Jeu[]  // Pas besoin d'un nom de relation ici
 }
