@@ -15,7 +15,8 @@ model Jeu {
   genreId     Int
   publisherId Int
   genre       Genre    @relation(fields: [genreId], references: [id])
-  publisher   Editeur @relation(fields: [publisherId], references: [id]) // La relation "publisher" avec Editeur
+  publisher   Editeur @relation(fields: [publisherId], references: [id])
+  mise_en_avant Boolean  @default(false)
 }
 
 model Genre {
