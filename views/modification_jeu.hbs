@@ -17,7 +17,7 @@
     <label for="releaseDate">Date de sortie :</label>
     <input type="date" id="releaseDate" name="releaseDate" value="{{dateFormat game.releaseDate}}" required><br>
 
-    <label for="genre">Genre :</label>
+
 <label for="genre">Genre :</label>
 <select id="genre" name="genreId" required>
   {{#each genres}}
@@ -28,22 +28,15 @@
 <label for="publisher">Éditeur :</label>
 <select id="publisher" name="publisherId" required>
   {{#each publishers}}
-    <option value="{{this.id}}"></option>
+    <option value="{{this.id}}" >{{this.name}}</option>
   {{/each}}
 </select><br>
 
-<label for="mise_en_avant">Mise en Avant :</label>
-<select id="mise_en_avant" name="mise_en_avant" required>
-    {{#if games.mise_en_avant}}
-            Oui
-            {{else}}
-            Non
-            {{/if}}
-            
-</select><br>
+  <label for="mise_en_avant">Mettre en avant ce jeu ?</label>
+      <input type="checkbox" name="mise_en_avant"><br>
 
-    <button type="submit">Sauvegarder</button>
-  </form>
+      <button type="submit">Sauvegarder</button>
+    </form>
 
   <form action="/games/{{game.id}}/delete" method="POST" onsubmit="return confirmDelete()">
   <button type="submit" style="color: red;">Supprimer</button>

@@ -7,20 +7,18 @@
 </head>
 <body>
   <h1>Jeux Mis en Avant</h1>
-  {{#if games.mise_en_avant}}
+  {{#each games}}
+    {{#if this.mise_en_avant}}
     <ul>
-      {{#each games}}
         <li>
           <strong>{{this.title}}</strong><br>
           <em>Genre :</em> {{this.genre.name}}<br>
           <em>Éditeur :</em> {{this.publisher.name}}<br>
           <p><em>Description :</em> {{this.description}}</p>
         </li>
-      {{/each}}
     </ul>
-  {{else}}
-    <p>Aucun jeu n'est mis en avant pour le moment.</p>
-  {{/if}}
+    {{/if}}
+  {{/each}}
   <a href="/games/new">Ajouter un jeu</a>
   <a href="/games">Liste de tout les jeux</a>
 </body>

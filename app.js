@@ -100,46 +100,59 @@ app.get('/games', async (req, res) => {
     }
   });
 
-  // Ajouter un genre (POST)
-app.post('/genres', async (req, res) => {
+ // Route pour afficher la liste des editeurs
+ app.get('/publishers', async (req, res) => {
+  //A faire par clement 
+  //Ce que j'ai fait c'est un tampon pour que je puisse travailler 
   try {
-    const { name } = req.body;
-    // Vérifier si le genre existe déjà
-    const existingGenre = await prisma.genre.findUnique({ where: { name } });
-    if (existingGenre) {
-      return res.status(400).send('Le genre existe déjà.');
-    }
-
-    // Créer le genre
-    await prisma.genre.create({ data: { name } });
-    res.redirect('/games/new'); // Rediriger vers la page de création de jeu après l'ajout
+    res.render('editeurs'); // Vue pour afficher le formulaire
   } catch (error) {
-    console.error('Erreur lors de la création du genre :', error.message);
+    console.error('Erreur lors de l\'affichage de la liste d\'éditeurs :', error.message);
     res.status(500).send('Erreur interne du serveur');
   }
 });
 
+  //Route pour ajouter un editeur
+  app.get('/publishers/new', async (req, res) => {
+    try {
+      res.render('nouveau_editeur'); // Vue pour afficher le formulaire
+    } catch (error) {
+      console.error('Erreur lors de l\'affichage du formulaire d\'éditeur :', error.message);
+      res.status(500).send('Erreur interne du serveur');
+    }
+  });
+  
 // Ajouter un éditeur (POST)
-app.post('/publishers', async (req, res) => {
+app.post('/publishers/new', async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name } = req.body; // Récupérer le nom envoyé depuis le formulaire
+
     // Vérifier si l'éditeur existe déjà
-    const existingPublisher = await prisma.editeur.findUnique({ where: { name } });
-    if (existingPublisher) {
-      return res.status(400).send('L\'éditeur existe déjà.');
+    const editeurExistant = await prisma.editeur.findUnique({
+      where: { name },
+    });
+
+    if (editeurExistant) {
+      // Rediriger avec un message d'erreur ou afficher une vue spécifique
+      return res.status(400).send("L'éditeur existe déjà.");
     }
 
-    // Créer l'éditeur
-    await prisma.editeur.create({ data: { name } });
-    res.redirect('/games/new'); // Rediriger vers la page de création de jeu après l'ajout
+    // Si l'éditeur n'existe pas, le créer
+    await prisma.editeur.create({
+      data: { name },
+    });
+
+    // Rediriger vers la liste des éditeurs
+    res.redirect('/publishers/new');
   } catch (error) {
-    console.error('Erreur lors de la création de l\'éditeur :', error.message);
-    res.status(500).send('Erreur interne du serveur');
+    console.error("Erreur lors de la création de l'éditeur :", error.message);
+    res.status(500).send("Erreur interne du serveur");
   }
 });
+
 
   // Ajouter un nouveau jeu (POST)
-app.post('/games', async (req, res) => {
+app.post('/games/new', async (req, res) => {
   try {
     const { title, description, releaseDate, genreId, publisherId,mise_en_avant} = req.body;
     await prisma.jeu.create({
@@ -152,7 +165,7 @@ app.post('/games', async (req, res) => {
         mise_en_avant: mise_en_avant === 'on'      
       },
     });
-    res.redirect('/games'); // Rediriger vers la liste des jeux après la création
+    res.redirect('/games/new'); // Rediriger vers la liste des jeux après la création
   } catch (error) {
     console.error('Erreur lors de la création du jeu :', error.message);
     res.status(500).send('Erreur interne du serveur');
@@ -211,10 +224,10 @@ app.get('/games/:id/edit', async (req, res) => {
 
 
 // Route pour sauvegarder les modifications du jeu
-app.post('/games/:id', async (req, res) => {
+app.post('/games/:id/edit', async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, description, releaseDate, genreId, publisherId } = req.body;
+    const { title, description, releaseDate, genreId, publisherId, mise_en_avant } = req.body;
 
     // Mise à jour du jeu dans la base de données
     await prisma.jeu.update({
@@ -225,12 +238,13 @@ app.post('/games/:id', async (req, res) => {
         releaseDate: new Date(releaseDate), // Convertir en objet Date
         genreId: parseInt(genreId), // Convertir en entier
         publisherId: parseInt(publisherId), // Convertir en entier
+        mise_en_avant: mise_en_avant === 'on'      
       },
     });
 
 
     // Rediriger vers la page des jeux après la modification
-    res.redirect('/games');
+    res.redirect('/games/:id/edit');
   } catch (error) {
     console.error('Erreur lors de la mise à jour du jeu :', error.message);
     res.status(500).send('Erreur interne du serveur');
