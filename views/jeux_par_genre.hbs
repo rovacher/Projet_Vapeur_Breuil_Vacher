@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css">
   <title>Jeux de {{genre.name}}</title>
 </head>
 <body>
@@ -43,7 +44,8 @@
   {{else}}
   <p>Aucun jeu trouvé pour ce genre.</p>
   {{/if}}
-
+  <a href="/jeux/new">Ajouter un jeu</a>
+  <br/>
   <a href="/genres">Retour à la liste des genres</a>
 </body>
 </html>

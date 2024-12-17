@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.css">
   <title>Vapeur - Accueil</title>
 </head>
 
@@ -39,13 +40,13 @@
         </td>
         </tr>
       {{/each}}
-    </tbody>    
-  <a href="/jeux/new">Ajouter un jeu</a>
+    </tbody>
   </table>
    {{else}}
   <p>Aucun jeu mis en avant.</p>
+  {{/if}}  
   <a href="/jeux/new">Ajouter un jeu</a>
-  {{/if}}
+  <br/>
   <a href="/jeux">Liste de tout les jeux</a>
   
 </body>

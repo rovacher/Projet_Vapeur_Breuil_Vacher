@@ -1,0 +1,105 @@
+/* Style général */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #CEE0DC; /* Fond doux */
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #A5243D; /* Couleur principale pour les titres */
+}
+
+a {
+  color: #6c3747;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #A5243D;
+}
+
+
+
+/* Table */
+table {
+  width: 80%;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+table th, table td {
+  border: 1px solid #AFAAB9;
+  padding: 1rem;
+  text-align: center;
+}
+
+table th ,table th a {
+  background-color: #B48291;
+  color: white;
+}
+
+table tr:nth-child(even) {
+  background-color: #B9CFD4;
+}
+
+table tr:nth-child(odd) {
+  background-color: #CEE0DC;
+}
+table tr:hover , tr:hover a {
+  background-color: #AFAAB9;
+  color: #fff;
+}
+
+/* Boutons */
+button {
+  background-color: #A5243D;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #B48291;
+}
+
+/* Formulaires */
+form {
+  width: 50%;
+  margin: 2rem auto;
+  background-color: #B9CFD4;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+form input, form textarea, form select {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #AFAAB9;
+  border-radius: 5px;
+}
+
+form button {
+  margin-top: 1rem;
+}
+
+/* Pied de page */
+footer {
+  background-color: #A5243D;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

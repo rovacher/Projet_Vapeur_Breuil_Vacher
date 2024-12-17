@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css">
   <title>Détails du Jeu</title>
 </head>
 <body>
@@ -12,11 +13,11 @@
   <p><strong>Description :</strong> {{game.description}}</p>
   <p><strong>Date de sortie :</strong> {{dateFormat game.releaseDate}}</p>
 
-  <h2>Genre</h2>
-  <p><strong>{{game.genre.name}}</strong></p>
+  <h2><a href="/genres">Genre</a></h2>
+  <p><strong><a href="/jeux/genres/{{game.genre.id}}">{{game.genre.name}}</a></strong></p>
 
-  <h2>Éditeur</h2>
-  <p><strong>{{game.publisher.name}}</strong></p>
+  <h2><a href="/editeurs">Éditeur</a></h2>
+  <p><strong><a href="/jeux/editeurs/{{game.publisher.id}}">{{game.publisher.name}}</a></strong></p>
 
   <h2>Mise en Avant ? </h2>
   <p><strong>{{#if jeux.mise_en_avant}}

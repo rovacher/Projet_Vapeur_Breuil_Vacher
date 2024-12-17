@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css">
   <title>Jeux de {{editeur.name}}</title>
 </head>
 <body>
@@ -43,7 +44,8 @@
   {{else}}
   <p>Aucun jeu trouvé pour cet éditeur.</p>
   {{/if}}
-
+  <a href="/jeux/new">Ajouter un jeu</a>
+  <br/>
   <a href="/editeurs">Retour à la liste des éditeurs</a>
 </body>
 </html>

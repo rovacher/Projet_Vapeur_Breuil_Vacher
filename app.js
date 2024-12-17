@@ -20,6 +20,9 @@ const app = express();
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/layouts'));
+hbs.registerHelper('eq', function (a,b) {
+  return a===b;
+})
 hbs.registerHelper('dateFormat', function (date) {
   return moment(date).format('DD/MM/YYYY'); // Vous pouvez personnaliser le format comme souhaité
 });
@@ -66,7 +69,7 @@ async function createGenres() {
           publisher: true, // Relation avec Editeur
         },
       });
-      res.render('index', {  });
+      res.render('index', { jeux });
     } catch (error) {
       console.error('Erreur lors de la récupération des jeux mis en avant :', error.message);
       res.status(500).send('Erreur interne du serveur');
