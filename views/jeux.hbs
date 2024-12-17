@@ -10,8 +10,8 @@
     <thead>
       <tr>
         <th>Titre</th>
-        <th>Genre</th>
-        <th>Éditeur</th>
+        <th><a href="/genres">Genre</a></th>
+        <th><a href="/editeurs">Éditeur</a></th>
         <th>Description</th>
         <th>Mise en Avant ?</th>
       </tr>
@@ -20,8 +20,8 @@
       {{#each jeux}}
         <tr>
           <td><a href="/jeux/{{this.id}}">{{this.title}}</a></td> <!-- Lien vers les détails du jeu -->
-          <td>{{this.genre.name}}</td>
-          <td>{{this.publisher.name}}</td>
+          <td><a href="/jeux/genres/{{this.genre.id}}">{{this.genre.name}}</a></td>
+          <td><a href="/jeux/editeurs/{{this.publisher.id}}">{{this.publisher.name}}</a></td>
           <td>{{this.description}}</td>
           <td>{{#if this.mise_en_avant}}
             Oui

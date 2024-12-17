@@ -22,9 +22,13 @@
   function confirmDelete() {
     return confirm("Êtes-vous sûr de vouloir supprimer cet Editeur ?");
   }
-</script>
   
-
+  // Message pop-up après modification réussie
+    function showSuccessMessage() {
+      alert("Le jeu a été modifié avec succès !");
+      return true; // Permet de soumettre le formulaire
+    }
+</script>
 
   <a href="/jeux">Retour à la liste des jeux</a>
 </body>

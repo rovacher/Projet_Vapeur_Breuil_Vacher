@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vapeur - Accueil</title>
 </head>
+
 <body>
   <h1>Jeux Mis en Avant</h1>
   {{#if jeux.length}}
@@ -12,8 +13,8 @@
     <thead>
       <tr>
         <th>Titre</th>
-        <th>Genre</th>
-        <th>Éditeur</th>
+        <th><a href="/genres">Genre</a></th>
+        <th><a href="/editeurs">Éditeur</a></th>
         <th>Description</th>
         <th>Mise en Avant ?</th>
       </tr>
@@ -22,8 +23,8 @@
       {{#each jeux}}
         <tr>
           <td><a href="/jeux/{{this.id}}">{{this.title}}</a></td> <!-- Lien vers les détails du jeu -->
-          <td>{{this.genre.name}}</td>
-          <td>{{this.publisher.name}}</td>
+          <td><a href="/jeux/genres/{{this.genre.id}}">{{this.genre.name}}</a></td>
+          <td><a href="/jeux/editeurs/{{this.publisher.id}}">{{this.publisher.name}}</a></td>
           <td>{{this.description}}</td>
           <td>{{#if this.mise_en_avant}}
             Oui
@@ -38,14 +39,14 @@
         </td>
         </tr>
       {{/each}}
-    </tbody>
+    </tbody>    
+  <a href="/jeux/new">Ajouter un jeu</a>
   </table>
    {{else}}
   <p>Aucun jeu mis en avant.</p>
-  {{/if}}
   <a href="/jeux/new">Ajouter un jeu</a>
+  {{/if}}
   <a href="/jeux">Liste de tout les jeux</a>
-  <a href="/genres">Liste des genres</a>
-  <a href="/editeurs">Liste des editeurs</a>
+  
 </body>
 </html>

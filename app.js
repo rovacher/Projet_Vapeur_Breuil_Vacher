@@ -59,14 +59,14 @@ async function createGenres() {
   // Route principale (Accueil)
   app.get('/', async (req, res) => {
     try {
-      const featuredjeux = await prisma.jeu.findMany({
+      const jeux = await prisma.jeu.findMany({
         where: { mise_en_avant: true }, // Filtre uniquement les jeux mis en avant
         include: {
           genre: true,
           publisher: true, // Relation avec Editeur
         },
       });
-      res.render('index', { jeux: featuredjeux });
+      res.render('index', {  });
     } catch (error) {
       console.error('Erreur lors de la récupération des jeux mis en avant :', error.message);
       res.status(500).send('Erreur interne du serveur');
@@ -256,7 +256,7 @@ app.get('/jeux/editeurs/:id', async (req, res) => {
   }
 });
 
-// Route pour afficher les jeux par éditeur
+// Route pour afficher les jeux par genre
 app.get('/jeux/genres/:id', async (req, res) => {
   try {
     const genreId = parseInt(req.params.id, 10);
@@ -427,7 +427,6 @@ app.get('/genres', async (req, res) => {
     res.status(500).send('Erreur interne du serveur');
   }
 });
-
 
   // Lancer le serveur
   const PORT = 3000;
