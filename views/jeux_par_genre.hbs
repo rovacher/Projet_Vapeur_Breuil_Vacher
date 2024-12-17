@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vapeur - Accueil</title>
+  <title>Jeux de {{genre.name}}</title>
 </head>
 <body>
-  <h1>Jeux Mis en Avant</h1>
+  <h1>Jeux dans le genre : {{genre.name}}</h1>
+
   {{#if jeux.length}}
   <table border="1" cellspacing="0" cellpadding="5">
     <thead>
@@ -40,12 +40,10 @@
       {{/each}}
     </tbody>
   </table>
-   {{else}}
-  <p>Aucun jeu mis en avant.</p>
+  {{else}}
+  <p>Aucun jeu trouvé pour ce genre.</p>
   {{/if}}
-  <a href="/jeux/new">Ajouter un jeu</a>
-  <a href="/jeux">Liste de tout les jeux</a>
-  <a href="/genres">Liste des genres</a>
-  <a href="/editeurs">Liste des editeurs</a>
+
+  <a href="/genres">Retour à la liste des genres</a>
 </body>
 </html>

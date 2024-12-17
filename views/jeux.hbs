@@ -17,9 +17,9 @@
       </tr>
     </thead>
     <tbody>
-      {{#each games}}
+      {{#each jeux}}
         <tr>
-          <td><a href="/games/{{this.id}}">{{this.title}}</a></td> <!-- Lien vers les détails du jeu -->
+          <td><a href="/jeux/{{this.id}}">{{this.title}}</a></td> <!-- Lien vers les détails du jeu -->
           <td>{{this.genre.name}}</td>
           <td>{{this.publisher.name}}</td>
           <td>{{this.description}}</td>
@@ -29,8 +29,8 @@
             Non
             {{/if}}</td>
           <td>
-          <a href="/games/{{this.id}}/edit">Modifier</a>
-          <form action="/games/{{this.id}}/delete" method="POST" onsubmit="return confirmDelete()">
+          <a href="/jeux/{{this.id}}/edit">Modifier</a>
+          <form action="/jeux/{{this.id}}/delete" method="POST" onsubmit="return confirmDelete()">
             <button type="submit" style="color: red;">Supprimer</button>
           </form>
         </td>

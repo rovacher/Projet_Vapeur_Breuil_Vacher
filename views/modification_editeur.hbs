@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Modifier un Jeu</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Modifier l'Editeur</h1>
+  <form action="/editeurs/{{editeur.id}}/edit" method="POST">
+    <label for="name">Nom de l'éditeur :</label>
+    <input type="text" id="name" name="name" value="{{editeur.name}}" required><br>
+
+      <button type="submit">Sauvegarder</button>
+    </form>
+
+  <form action="/editeur/{{editeur.id}}/delete" method="POST" onsubmit="return confirmDelete()">
+  <button type="submit" style="color: red;">Supprimer</button>
+  </form>
+
+<script>
+  function confirmDelete() {
+    return confirm("Êtes-vous sûr de vouloir supprimer cet Editeur ?");
+  }
+</script>
+  
+
+
+  <a href="/jeux">Retour à la liste des jeux</a>
+</body>
+</html>

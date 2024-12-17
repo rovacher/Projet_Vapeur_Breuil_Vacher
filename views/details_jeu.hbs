@@ -19,13 +19,13 @@
   <p><strong>{{game.publisher.name}}</strong></p>
 
   <h2>Mise en Avant ? </h2>
-  <p><strong>{{#if games.mise_en_avant}}
+  <p><strong>{{#if jeux.mise_en_avant}}
             Oui
             {{else}}
             Non
             {{/if}}</strong></p>
 
-  <form action="/games/{{game.id}}/delete" method="POST" onsubmit="return confirmDelete()">
+  <form action="/jeux/{{game.id}}/delete" method="POST" onsubmit="return confirmDelete()">
   <button type="submit" style="color: red;">Supprimer</button>
   </form>
 
@@ -35,9 +35,9 @@
   }
 </script>
 
-  <a href="/games/{{game.id}}/edit">Modifier le Jeu</a>
+  <a href="/jeux/{{game.id}}/edit">Modifier le Jeu</a>
 
   <br/>
-  <a href="/games">Retour à la liste des jeux</a>
+  <a href="/jeux">Retour à la liste des jeux</a>
 </body>
 </html>

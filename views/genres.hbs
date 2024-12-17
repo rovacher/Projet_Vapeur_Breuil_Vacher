@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Vapeur - Tous les Genres</title>
+</head>
+<body>
+  <h1>Liste des Genres</h1>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Genre</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each genre}}
+        <tr>
+          <td><a href="/jeux/genres/{{this.id}}">{{this.name}}</a></td> 
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <a href="/">Retour à l'accueil</a>
+</body>
+</html>
+
+
+

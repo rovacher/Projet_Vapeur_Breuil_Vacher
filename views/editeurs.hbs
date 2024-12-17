@@ -5,7 +5,32 @@
   <title>Vapeur - Tous les Jeux</title>
 </head>
 <body>
-  <a href="/games/new">Retour à la création de jeu </a>
+  <h1>Liste des Editeurs</h1>
+  <table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Nom de l'éditeur</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each editeur}}
+        <tr>
+          <td><a href="/jeux/editeurs/{{this.id}}">{{this.name}}</a></td>
+          <td>
+          <a href="/editeurs/{{this.id}}/edit">Modifier</a>
+          <form action="/editeurs/{{this.id}}/delete" method="POST" onsubmit="return confirmDelete()">
+            <button type="submit" style="color: red;">Supprimer</button>
+          </form>
+        </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <script>
+  function confirmDelete() {
+    return confirm("Êtes-vous sûr de vouloir supprimer ce jeu ?");
+  }
+</script>
   <a href="/">Retour à l'accueil</a>
 </body>
 </html>
